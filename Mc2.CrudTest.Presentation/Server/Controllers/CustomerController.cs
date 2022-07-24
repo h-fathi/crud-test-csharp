@@ -1,21 +1,84 @@
-﻿
+﻿using Mc2.CrudTest.Application.Features.DeleteCustomerById;
+using Mc2.CrudTest.Application.Features.GetCustomerById;
+using Mc2.CrudTest.Application.Features.RegisterCustomer;
+using Mc2.CrudTest.Application.Features.UpdateCustomer;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+using System;
+using System.Threading.Tasks;
 
 namespace Mc2.CrudTest.Presentation.Server.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class CustomerController : ControllerBase
+    [Route("api/[controller]")]
+    public class CustomersController : ControllerBase
     {
-        private readonly ILogger<CustomerController> _logger;
+        private readonly IMediator _mediator;
 
-        public CustomerController(ILogger<CustomerController> logger)
+        public CustomersController(IMediator mediator)
         {
-            _logger = logger;
+            _mediator = mediator;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterCustomer([FromBody] RegisterCustomerRequest request)
+        {
+            try
+            {
+                var customer = await _mediator.Send(new RegisterCustomerCommand(request.FirstName, request.LastName, request.DateOfBirth, request.PhoneNumber, request.Email, request.BankAccountNumber));
+
+                return Created(string.Empty, customer);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route("{guid}")]
+        public async Task<IActionResult> Delete(Guid guid, [FromBody] UpdateCustomerRequest request)
+        {
+            try
+            {
+                var result = await _mediator.Send(new UpdateCustomerCommand(guid, request.FirstName, request.LastName, request.DateOfBirth, request.PhoneNumber, request.Email, request.BankAccountNumber));
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("{guid}")]
+        public async Task<IActionResult> Get(Guid guid)
+        {
+            try
+            {
+                var customer = await _mediator.Send(new GetCustomerByIdQuery(guid));
+                return Ok(customer);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+        [HttpDelete]
+        [Route("{guid}")]
+        public async Task<IActionResult> Delete(Guid guid)
+        {
+            try
+            {
+                var result = await _mediator.Send(new DeleteCustomerByIdCommand(guid));
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
     }

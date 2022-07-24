@@ -1,8 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.1.0" />
+    <PackageReference Include="libphonenumber-csharp" Version="8.12.52" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Mc2.CrudTest.Presentation\Shared\Mc2.CrudTest.Shared.csproj" />

@@ -29,7 +29,15 @@ namespace Mc2.CrudTest.Presentation.Server
             services.AddApplication();
             services.AddEventsDispatcher();
 
-
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "Mc2.CrudTest CQRS API",
+                    Version = "v1",
+                    Description = "Sample .NET Core REST API CQRS implementation with raw SQL and DDD using Onion Architecture.",
+                });
+            });
 
         }
 
@@ -40,6 +48,12 @@ namespace Mc2.CrudTest.Presentation.Server
             {
                 app.UseDeveloperExceptionPage();
                 app.UseWebAssemblyDebugging();
+                app.UseSwagger();
+
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mc2.CrudTest CQRS API");
+                });
             }
             else
             {

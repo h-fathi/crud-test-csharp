@@ -1,4 +1,6 @@
-﻿using Mc2.CrudTest.Domain.ValueObjects;
+﻿using Mc2.CrudTest.Domain.Customers.Events;
+using Mc2.CrudTest.Domain.Customers.Rules;
+using Mc2.CrudTest.Domain.ValueObjects;
 using Mc2.CrudTest.Shared.Domain;
 using System;
 
@@ -12,9 +14,6 @@ namespace Mc2.CrudTest.Domain.Customers
         public DateTime DateOfBirth { get; private set; }
         public string PhoneNumber { get; private set; }
         public Email Email { get; private set; }
-
-
-
         public string BankAccountNumber { get; private set; }
 
         public Customer(Guid id, string firstname, string lastname, DateTime dateOfBirth, string phoneNumber, string email, string bankAccountNumber)
@@ -37,7 +36,32 @@ namespace Mc2.CrudTest.Domain.Customers
             Email = Email.Create(email);
             BankAccountNumber = bankAccountNumber;
 
+            this.AddDomainEvent(new CustomerRegisteredEvent(this));
         }
+
+
+        public static Customer CreateRegistered(string firstName, string lastName, DateTime dateOfBirth, string phoneNumber,
+       string email, string bankAccountNumber, ICustomerUniquenessChecker customerUniquenessChecker)
+        {
+            CheckRule(new CustomerEmailUniqueValidatiorRule(customerUniquenessChecker, email, null));
+            CheckRule(new CustomerPhoneNumberValidatiorRule(phoneNumber));
+            CheckRule(new CustomerFirstLastNameAndDateOfBirthMustBeUniqueRule(customerUniquenessChecker, firstName, lastName, dateOfBirth, null));
+
+            return new Customer(firstName, lastName, dateOfBirth, phoneNumber, email, bankAccountNumber);
+        }
+
+
+        public static Customer CreateUpdated(Guid id, string firstName, string lastName, DateTime dateOfBirth, string phoneNumber,
+         string email, string bankAccountNumber, ICustomerUniquenessChecker customerUniquenessChecker)
+        {
+            CheckRule(new CustomerEmailUniqueValidatiorRule(customerUniquenessChecker, email, id));
+            CheckRule(new CustomerPhoneNumberValidatiorRule(phoneNumber));
+            CheckRule(new CustomerFirstLastNameAndDateOfBirthMustBeUniqueRule(customerUniquenessChecker, firstName, lastName, dateOfBirth, id));
+
+            return new Customer(id, firstName, lastName, dateOfBirth, phoneNumber, email, bankAccountNumber);
+        }
+
+
 
         public CustomerState GetState()
         {

@@ -68,5 +68,36 @@ namespace Mc2.CrudTest.Persistance.Repositories
             _dbContext.Customers.Remove(item);
         }
 
+        public async Task<bool> ExistCustomerEmail(string email, Guid? id = null)
+        {
+            var query = _dbContext.Customers
+                .AsQueryable()
+                .Where(x => x.Email == email);
+            if (id != null)
+                query = query.Where(x => x.Id != id);
+
+            var item = await query.FirstOrDefaultAsync();
+
+            if (item == null)
+                return true;
+            else
+                return false;
+        }
+        public async Task<bool> ExistCustomerFirstLastNameAndBirthOfDate(string customerFirstName, string customerLastName, DateTime dateOfBirth, Guid? id = null)
+        {
+            var query = _dbContext.Customers
+               .AsQueryable()
+               .Where(x => x.Firstname == customerFirstName && x.Lastname == customerLastName && x.DateOfBirth == dateOfBirth);
+            if (id != null)
+                query = query.Where(x => x.Id != id);
+
+            var item = await query.FirstOrDefaultAsync();
+
+            if (item == null)
+                return true;
+            else
+                return false;
+        }
+
     }
 }

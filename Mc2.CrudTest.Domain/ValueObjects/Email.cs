@@ -11,7 +11,7 @@ namespace Mc2.CrudTest.Domain.ValueObjects
         private Email(String email)
         {
             if (!ValidateEmail(email))
-                throw new ArgumentException("email is not valid.");
+                throw new ArgumentException("Email is not valid.");
             this._email = email;
         }
 
