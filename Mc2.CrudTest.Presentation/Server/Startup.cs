@@ -1,3 +1,5 @@
+using Mc2.CrudTest.Application;
+using Mc2.CrudTest.Persistance;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,9 +21,16 @@ namespace Mc2.CrudTest.Presentation.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddHttpContextAccessor();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddPersistence(Configuration);
+            services.AddApplication();
+            services.AddEventsDispatcher();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
