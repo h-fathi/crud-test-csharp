@@ -6,7 +6,6 @@ namespace Mc2.CrudTest.Domain.Customers
 {
     public class Customer : Entity, IAggregateRoot
     {
-        public Guid Key { get { return Id.Value; } }
         public CustomerId Id { get; private set; }
         public string Firstname { get; private set; }
         public string Lastname { get; private set; }
