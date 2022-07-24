@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc2.CrudTest.Presentation.Front", "Mc2.CrudTest.Presentation\Front\Mc2.CrudTest.Presentation.Front.csproj", "{4B62EAE3-1858-4833-9E36-EE77FADC2328}"
 EndProject
@@ -10,6 +10,22 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc2.CrudTest.Shared", "Mc2.CrudTest.Presentation\Shared\Mc2.CrudTest.Shared.csproj", "{661369DC-0F78-4889-BA3B-639513A49789}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc2.CrudTest.Presentation.Server", "Mc2.CrudTest.Presentation\Server\Mc2.CrudTest.Presentation.Server.csproj", "{8D41010B-AEF1-4742-B7EC-6A5AE62C45FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6568B1DB-6023-4816-85D7-83DCEE7BD539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mc2.CrudTest.Domain", "Mc2.CrudTest.Domain\Mc2.CrudTest.Domain.csproj", "{66D1FC6D-4639-48D9-8801-2D5A77574630}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mc2.CrudTest.Application", "Mc2.CrudTest.Application\Mc2.CrudTest.Application.csproj", "{468AF50C-A966-4940-BCA2-0407252F8C3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{C53C9F70-01CA-40EA-A6CC-5CD4477F0C61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mc2.CrudTest.Persistance", "Mc2.CrudTest.Persistance\Mc2.CrudTest.Persistance.csproj", "{D677BBFC-CDC9-47D7-805E-C11A0D5587B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4496C101-298A-4BB4-8E9F-AA6056DD86F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{581A1107-8853-4F9E-A951-FB32CEB976BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mc2.CrudTest.AnotherDbProjection", "Mc2.CrudTest.AnotherDbProjection\Mc2.CrudTest.AnotherDbProjection.csproj", "{C3E3A59E-5C85-493F-9AAA-71B2F81548C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +49,35 @@ Global
 		{8D41010B-AEF1-4742-B7EC-6A5AE62C45FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D41010B-AEF1-4742-B7EC-6A5AE62C45FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D41010B-AEF1-4742-B7EC-6A5AE62C45FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66D1FC6D-4639-48D9-8801-2D5A77574630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66D1FC6D-4639-48D9-8801-2D5A77574630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66D1FC6D-4639-48D9-8801-2D5A77574630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66D1FC6D-4639-48D9-8801-2D5A77574630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{468AF50C-A966-4940-BCA2-0407252F8C3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{468AF50C-A966-4940-BCA2-0407252F8C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{468AF50C-A966-4940-BCA2-0407252F8C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{468AF50C-A966-4940-BCA2-0407252F8C3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D677BBFC-CDC9-47D7-805E-C11A0D5587B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D677BBFC-CDC9-47D7-805E-C11A0D5587B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D677BBFC-CDC9-47D7-805E-C11A0D5587B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D677BBFC-CDC9-47D7-805E-C11A0D5587B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3E3A59E-5C85-493F-9AAA-71B2F81548C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3E3A59E-5C85-493F-9AAA-71B2F81548C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3E3A59E-5C85-493F-9AAA-71B2F81548C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3E3A59E-5C85-493F-9AAA-71B2F81548C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4B62EAE3-1858-4833-9E36-EE77FADC2328} = {4496C101-298A-4BB4-8E9F-AA6056DD86F0}
+		{00E0E714-1EB4-4B62-950F-AE7C3BFD6766} = {581A1107-8853-4F9E-A951-FB32CEB976BD}
+		{661369DC-0F78-4889-BA3B-639513A49789} = {C53C9F70-01CA-40EA-A6CC-5CD4477F0C61}
+		{8D41010B-AEF1-4742-B7EC-6A5AE62C45FC} = {4496C101-298A-4BB4-8E9F-AA6056DD86F0}
+		{66D1FC6D-4639-48D9-8801-2D5A77574630} = {6568B1DB-6023-4816-85D7-83DCEE7BD539}
+		{468AF50C-A966-4940-BCA2-0407252F8C3B} = {6568B1DB-6023-4816-85D7-83DCEE7BD539}
+		{D677BBFC-CDC9-47D7-805E-C11A0D5587B1} = {C53C9F70-01CA-40EA-A6CC-5CD4477F0C61}
+		{C3E3A59E-5C85-493F-9AAA-71B2F81548C2} = {C53C9F70-01CA-40EA-A6CC-5CD4477F0C61}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4B5A26C9-68C1-49D9-9F32-AF907A1730C2}
