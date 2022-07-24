@@ -62,6 +62,7 @@ namespace Mc2.CrudTest.Presentation.Server
                 app.UseHsts();
             }
 
+            app.ApplicationServices.AddDbInitialazer();
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();

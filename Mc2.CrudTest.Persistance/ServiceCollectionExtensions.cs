@@ -34,5 +34,16 @@ namespace Mc2.CrudTest.Persistance
             services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
 
         }
+
+
+        public static void AddDbInitialazer(this IServiceProvider services)
+        {
+            // migrate any database changes on startup (includes initial db creation)
+            using (var scope = services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                context.Database.Migrate();
+            }
+        }
     }
 }
