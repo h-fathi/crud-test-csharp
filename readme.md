@@ -1,4 +1,4 @@
-# CRUD Code Test 
+# DDD CRUD Code Test 
 
 Please read each note very carefully!
 Feel free to add/change project structure to a clean architecture to your view.
@@ -22,7 +22,7 @@ Customer {
 - [DDD](https://en.wikipedia.org/wiki/Domain-driven_design)
 - [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development)
 - [Clean architecture](https://github.com/jasontaylordev/CleanArchitecture)
-- [CQRS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_separation) pattern ([Event sourcing](https://en.wikipedia.org/wiki/Domain-driven_design#Event_sourcing)).
+- [CQRS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_separation) pattern.
 - Clean git commits that shows your work progress.
 
 ### Validations (Must)
@@ -41,7 +41,3 @@ Customer {
 
 ### Delivery (Must)
 - Please clone this repository in a new github repository in private mode and share with ID: `mason-chase` in private mode on github.com, make sure you do not erase my commits and then create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (code review).
-
-## Nice to do:
-- Blazor Web.
-- Docker-compose project that loads database service automatically which `docker-compose up`
